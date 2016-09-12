@@ -43,11 +43,6 @@ public class CardController {
             return new ResponseEntity<Card>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        /*
-         * If there is no card with such number, create a new one; otherwise
-         * update existing one.
-         */
-
         if (card == null) {
             System.err.println("Card not found.");
             return new ResponseEntity<Card>(HttpStatus.NOT_FOUND);
@@ -62,8 +57,8 @@ public class CardController {
     @RequestMapping(value="/card", method = RequestMethod.POST)
     public ResponseEntity<Card> addCard(
             @RequestParam(value="number", defaultValue="0") long number,
-            @RequestParam(value="value", defaultValue="0") long value,
-            @RequestParam(value="discount", defaultValue="0") long discount) {
+            @RequestParam(value="value", defaultValue="0") float value,
+            @RequestParam(value="discount", defaultValue="0") float discount) {
 
         // Validate input data.
         if (!Utils.isNumberValid(number)) {
@@ -104,7 +99,7 @@ public class CardController {
          */
 
         if (card == null) {
-            card = new Card(number,value,discount);
+            card = new Card(number, value, discount);
         } else {
             card.setValue(value);
             card.setDiscount(discount);
