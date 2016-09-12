@@ -8,11 +8,11 @@ public class Utils {
         return (number >=0) && (length == cardNumberLength);
     }
 
-    public static boolean isValueValid(long value) {
-        return value >= 0;
+    public static boolean isValueValid(float value) {
+        return value >= 0.0;
     }
 
-    public static boolean isDiscountValid(long discount) {
-        return discount >= 0;
+    public static boolean isDiscountValid(float discount) {
+        return discount >= 0.0;
     }
 }
